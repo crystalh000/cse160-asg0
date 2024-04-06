@@ -16,8 +16,7 @@
     // Draw a blue rectangle <- (3)
     //ctx.fillStyle = 'rgba(0, 0, 255, 1.0)'; // Set a blue color
    // ctx.fillRect(120, 10, 150, 150); // Fill a rectangle with the color
-
-    drawVector(v1, "red");
+    //drawVector(v1, "red");
 }
 
 function drawVector(v,color) {
@@ -40,10 +39,12 @@ function handleDrawEvent() {
      ctx.fillRect(0, 0, canvas.width, canvas.height);
     let xVal = document.getElementById("xVal").value;
     let yVal = document.getElementById("yVal").value;
+    var v1 = new Vector3([xVal,yVal,0])
+    drawVector(v1, "red");
     // let v1 = document.getElementById("name").value;
-    console.log(xVal);
-    console.log(yVal);
-    console.log("clearing canvas!");
+    //console.log(xVal);
+    //console.log(yVal);
+    //console.log("clearing canvas!");
    
     
 }
