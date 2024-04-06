@@ -26,7 +26,6 @@ function drawVector(v,color) {
     ctx.strokeStyle = color;
     ctx.beginPath();
     ctx.moveTo(canvas.width / 2,canvas.height / 2);
-    //ctx.translate(canvas.width / 2, canvas.height / 2);
     var scaledX = v.elements[0] * 20;
     var scaledY = v.elements[1] * 20
     ctx.lineTo(canvas.width / 2 + scaledX,canvas.height / 2 - scaledY); // used ChatGPT to fix the proper repositioning
@@ -34,6 +33,17 @@ function drawVector(v,color) {
 }
 
 function handleDrawEvent() {
-    let v1 = document.getElementById("name").value;
-    console.log(v1);
+    var canvas = document.getElementById('example');
+    var ctx = canvas.getContext('2d');
+     // Specify the color for clearing <canvas>
+     ctx.fillStyle = 'black';
+     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    let xVal = document.getElementById("xVal").value;
+    let yVal = document.getElementById("yVal").value;
+    // let v1 = document.getElementById("name").value;
+    console.log(xVal);
+    console.log(yVal);
+    console.log("clearing canvas!");
+   
+    
 }
