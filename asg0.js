@@ -1,6 +1,7 @@
 
  // DrawRectangle.js
  // Function to draw a vector on the canvas
+ //const { dot } = require('./cuon-matrix-cse160');
 
  function main() {
     // Retrieve <canvas> element <- (1)
@@ -55,6 +56,15 @@ function handleDrawEvent() {
     //console.log("clearing canvas!");
    
 }
+
+
+function angleBetween(v1,v2) {
+    if (v1.magnitude != 0 && v2.magnitude != 0) {
+        var alpha = Math.acos(Vector3.dot(v1,v2) / (v1.magnitude() * v2.magnitude()));
+        return (alpha * 180) / Math.PI;
+    }
+}
+
 function handleDrawOperationEvent() {
     var canvas = document.getElementById('example');
     var ctx = canvas.getContext('2d');
@@ -101,11 +111,14 @@ function handleDrawOperationEvent() {
     } else if (opSelector == "norm") {
         v3 = v1.normalize();
         v4 = v2.normalize();
+    } else if (opSelector == "angle") {
+        var angle = angleBetween(v1, v2);
+        console.log(`Angle: ${angle}`);
     }
     if (opSelector == "mul" || opSelector == "div" || opSelector == "norm") {
         drawVector(v3, "green");
         drawVector(v4, "green");
-    } else if (opSelector == "mag") {
+    } else if (opSelector == "mag" || opSelector == "angle") {
         // do nothing
     }
     else {
@@ -113,3 +126,4 @@ function handleDrawOperationEvent() {
     }
 
 }
+
