@@ -59,10 +59,18 @@ function handleDrawEvent() {
 
 
 function angleBetween(v1,v2) {
-    if (v1.magnitude != 0 && v2.magnitude != 0) {
+    if (v1.magnitude() != 0 && v2.magnitude() != 0) {
         var alpha = Math.acos(Vector3.dot(v1,v2) / (v1.magnitude() * v2.magnitude()));
         return (alpha * 180) / Math.PI;
     }
+}
+
+function areaTriangle(v1,v2) {
+    var crossVector = Vector3.cross(v1,v2);
+    //console.log(`crossVector: ${crossVector.elements}`);
+    var areaPar = crossVector.magnitude();
+    //console.log(`areaPar: ${areaPar}`);
+    return areaPar / 2;
 }
 
 function handleDrawOperationEvent() {
@@ -114,11 +122,14 @@ function handleDrawOperationEvent() {
     } else if (opSelector == "angle") {
         var angle = angleBetween(v1, v2);
         console.log(`Angle: ${angle}`);
+    } else if (opSelector == "area-triangle") {
+        var area = areaTriangle(v1,v2);
+        console.log(`Area of the triangle: ${area}`);
     }
     if (opSelector == "mul" || opSelector == "div" || opSelector == "norm") {
         drawVector(v3, "green");
         drawVector(v4, "green");
-    } else if (opSelector == "mag" || opSelector == "angle") {
+    } else if (opSelector == "mag" || opSelector == "angle" || opSelector == "area-triangle") {
         // do nothing
     }
     else {
