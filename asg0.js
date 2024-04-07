@@ -26,7 +26,7 @@ function drawVector(v,color) {
     ctx.beginPath();
     ctx.moveTo(canvas.width / 2,canvas.height / 2);
     var scaledX = v.elements[0] * 20;
-    var scaledY = v.elements[1] * 20
+    var scaledY = v.elements[1] * 20;
     ctx.lineTo(canvas.width / 2 + scaledX,canvas.height / 2 - scaledY); // used ChatGPT to fix the proper repositioning
     ctx.stroke();
 }
@@ -93,11 +93,22 @@ function handleDrawOperationEvent() {
         v4 = v2.div(scalar);
         //console.log(v3);
         //console.log(v4);
+    } else if (opSelector == "mag") {
+        var m1 = v1.magnitude();
+        var m2 = v2.magnitude();
+        console.log(`Magnitude v1: ${m1}`);
+        console.log(`Magnitude v2: ${m2}`);
+    } else if (opSelector == "norm") {
+        v3 = v1.normalize();
+        v4 = v2.normalize();
     }
-    if (opSelector == "mul" || opSelector == "div" ) {
+    if (opSelector == "mul" || opSelector == "div" || opSelector == "norm") {
         drawVector(v3, "green");
         drawVector(v4, "green");
-    }else {
+    } else if (opSelector == "mag") {
+        // do nothing
+    }
+    else {
         drawVector(v3, "green");
     }
 
