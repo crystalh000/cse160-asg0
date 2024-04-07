@@ -37,13 +37,21 @@ function handleDrawEvent() {
      // Specify the color for clearing <canvas>
      ctx.fillStyle = 'black';
      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    let xVal = document.getElementById("xVal").value;
-    let yVal = document.getElementById("yVal").value;
+    let xVal = document.getElementById("v1-xVal").value;
+    let yVal = document.getElementById("v1-yVal").value;
     var v1 = new Vector3([xVal,yVal,0])
     drawVector(v1, "red");
+
+    let xVal2 = document.getElementById("v2-xVal").value;
+    let yVal2 = document.getElementById("v2-yVal").value;
+    var v2 = new Vector3([xVal2,yVal2,0])
+    drawVector(v2, "blue");
+    
     // let v1 = document.getElementById("name").value;
     //console.log(xVal);
     //console.log(yVal);
+    //console.log(xVal2);
+    //console.log(yVal2);
     //console.log("clearing canvas!");
    
     
